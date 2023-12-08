@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="OpenWeatherAppStyle" parent="Theme.OpenWeatherApp">
+        <item name="android:textViewStyle">@style/TextViewStyle</item>
+    </style>
+
+    <style name="TextViewStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">22sp</item>
+        <item name="android:padding">@dimen/textview_default_padding</item>
+        <item name="android:gravity">center</item>
+    </style>
+</resources>

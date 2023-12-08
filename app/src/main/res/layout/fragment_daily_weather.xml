@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="day"
+            type="com.example.openweatherapp.retrofit.response.forecast.WeatherList" />
+
+        <variable
+            name="helper"
+            type="com.example.openweatherapp.helper.binding.BindingHelper" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/fragment_default_padding"
+        tools:context=".ui.fragment.daily.DailyWeatherFragment">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDate"
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{helper.timestampToDate(day.dt)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="2000-01-01" />
+
+<!--        <androidx.appcompat.widget.AppCompatTextView-->
+<!--            android:id="@+id/tvTimezone"-->
+<!--            style="@style/TextAppearance.AppCompat.Headline"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text=""-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toStartOf="@id/tvDay"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/tvDate"-->
+<!--            tools:text="Budapest" />-->
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDay"
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{helper.timestampToDay(day.dt)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDate"
+            tools:text="Hétfő" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivWeatherIcon"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDay"
+            tools:src="@drawable/ic_weather_cloudy" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvWeather"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{day.weather[0].description}"
+            app:layout_constraintTop_toBottomOf="@id/ivWeatherIcon"
+            tools:text="Esős" />
+
+<!--        <androidx.appcompat.widget.AppCompatTextView-->
+<!--            android:id="@+id/tvTempMinMax"-->
+<!--            style="@style/TextAppearance.AppCompat.Headline"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@{helper.toMinMax(day.main.temp)}"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/tvWeather"-->
+<!--            tools:text="20°C/10°C"/>-->
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTempTitle"
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/title_data_temp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvWeather" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTemp"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{helper.toCelsius(day.main.temp)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/tvTempTitle"
+            app:layout_constraintStart_toEndOf="@+id/tvTempTitle"
+            app:layout_constraintTop_toTopOf="@+id/tvTempTitle"
+            tools:text="10°C" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvFeelsTitle"
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/title_data_pressure"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvTempTitle" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvFeels"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(day.main.pressure)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/tvFeelsTitle"
+            app:layout_constraintStart_toEndOf="@+id/tvFeelsTitle"
+            app:layout_constraintTop_toTopOf="@+id/tvFeelsTitle"
+            tools:text="10°C" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvHumidityTitle"
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/title_data_humidity"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvFeelsTitle" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvHumidity"
+            style="@style/TextAppearance.AppCompat.Title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(day.main.humidity)+'%'}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/tvHumidityTitle"
+            app:layout_constraintStart_toEndOf="@+id/tvHumidityTitle"
+            app:layout_constraintTop_toTopOf="@+id/tvHumidityTitle"
+            tools:text="Pára" />
+
+<!--        <androidx.appcompat.widget.AppCompatTextView-->
+<!--            android:id="@+id/tvSunriseTitle"-->
+<!--            style="@style/TextAppearance.AppCompat.Headline"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/title_data_sunrise"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/tvHumidityTitle" />-->
+
+<!--        <androidx.appcompat.widget.AppCompatTextView-->
+<!--            android:id="@+id/tvSunrise"-->
+<!--            style="@style/TextAppearance.AppCompat.Title"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            android:text="@{helper.timestampToTime(day.main.)}"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/tvSunriseTitle"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/tvSunriseTitle"-->
+<!--            tools:text="06:06" />-->
+
+<!--        <androidx.appcompat.widget.AppCompatTextView-->
+<!--            android:id="@+id/tvSunsetTitle"-->
+<!--            style="@style/TextAppearance.AppCompat.Headline"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/title_data_sunset"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/tvSunriseTitle" />-->
+
+<!--        <androidx.appcompat.widget.AppCompatTextView-->
+<!--            android:id="@+id/tvSunset"-->
+<!--            style="@style/TextAppearance.AppCompat.Title"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            android:text="@{helper.timestampToTime(day.sunset)}"-->
+<!--            app:layout_constraintStart_toEndOf="@+id/tvSunsetTitle"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/tvSunsetTitle"-->
+<!--            tools:text="06:06" />-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">OpenWeatherApp</string>
+    <string name="title_weekly">Heti időjárás</string>
+    <string name="title_daily">Napi időjárás</string>
+
+    <string name="title_data_dt">dt</string>
+    <string name="title_data_sunrise">Napkelte</string>
+    <string name="title_data_sunset">Napnyugta</string>
+    <string name="title_data_moonrise">Holdkelte</string>
+    <string name="title_data_moonset">Holdnyugta</string>
+    <string name="title_data_moonPhase">moonPhase</string>
+    <string name="title_data_temp">Hőmérséklet</string>
+    <string name="title_data_feelsLike">Hőérzet</string>
+    <string name="title_data_pressure">Légnyomás</string>
+    <string name="title_data_humidity">Páratartalom</string>
+    <string name="title_data_dewPoint">harmatpont </string>
+    <string name="title_data_windSpeed">Szélsebesség</string>
+    <string name="title_data_windDeg">windDeg</string>
+    <string name="title_data_windGust">windGust</string>
+    <string name="title_data_weather">Időjárás</string>
+    <string name="title_data_clouds">Felhők</string>
+    <string name="title_data_pop">pop</string>
+    <string name="title_data_uvi">uvi</string>
+    <string name="title_data_rain">Eső</string>
+</resources>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
